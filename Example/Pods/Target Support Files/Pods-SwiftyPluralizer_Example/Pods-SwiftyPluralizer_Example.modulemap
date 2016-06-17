@@ -1,0 +1,6 @@
+framework module Pods_SwiftyPluralizer_Example {
+  umbrella header "Pods-SwiftyPluralizer_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
