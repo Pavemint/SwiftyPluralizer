@@ -53,7 +53,7 @@ private struct Rule {
   let pattern: String
   let replacement: String
   
-  internal func apply(word: String) -> String? {
+  private func apply(word: String) -> String? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: .CaseInsensitive) else { return nil }
     let range = NSMakeRange(0, word.characters.count)
     guard regex.matchesInString(word, options: [], range: range).count > 0 else { return nil }
@@ -64,11 +64,11 @@ private struct Rule {
 private struct Uncountables {
   private var patterns = [String]()
   
-  internal mutating func append(patterns: [String]) {
+  private mutating func append(patterns: [String]) {
     self.patterns += patterns.map { "\($0)$" }
   }
   
-  internal func match(word: String) -> Bool {
+  private func match(word: String) -> Bool {
     for pattern in patterns {
       guard let regex = try? NSRegularExpression(pattern: pattern, options: .CaseInsensitive) else { continue }
       let range = NSMakeRange(0, word.characters.count)
