@@ -4,7 +4,7 @@ This pod is referencing [Ruby on Rails rules](https://github.com/rails/rails/blo
 
 
 [![Platform](https://img.shields.io/cocoapods/p/SwiftyPluralizer.svg?style=flat)](http://cocoapods.org/pods/SwiftyPluralizer)
-[![CI Status](http://img.shields.io/travis/Koji Murata/SwiftyPluralizer.svg?style=flat)](https://travis-ci.org/Koji Murata/SwiftyPluralizer)
+[![CI Status](http://img.shields.io/travis/malt03/SwiftyPluralizer.svg?style=flat)](https://travis-ci.org/Koji Murata/SwiftyPluralizer)
 [![Version](https://img.shields.io/cocoapods/v/SwiftyPluralizer.svg?style=flat)](http://cocoapods.org/pods/SwiftyPluralizer)
 ![Language](https://img.shields.io/badge/language-Swift%202.2-orange.svg)
 ![License](https://img.shields.io/github/license/malt03/SwiftyPluralizer.svg?style=flat)
