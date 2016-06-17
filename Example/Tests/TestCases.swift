@@ -9,6 +9,8 @@
 import Foundation
 
 struct TestCases {
+  // create this from Ruby on Rails
+  // https://github.com/rails/rails/blob/master/activesupport/test/inflector_test_cases.rb
   static let singularToPlural = [
     "search"      : "searches",
     "switch"      : "switches",
