@@ -17,11 +17,13 @@ extension String {
     return Pluralizer.defaultInstance.singular(self)
   }
   
-  public mutating func pluralize() {
+  public mutating func pluralize() -> String {
     self = Pluralizer.defaultInstance.plural(self)
+    return self
   }
   
-  public mutating func singularize() {
+  public mutating func singularize() -> String {
     self = Pluralizer.defaultInstance.singular(self)
+    return self
   }
 }
