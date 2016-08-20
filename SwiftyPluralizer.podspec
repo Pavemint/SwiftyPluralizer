@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftyPluralizer'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0-beta1'
   s.summary          = 'Simple string pluralization with Ruby on Rails rules.'
 
   s.description      = <<-DESC

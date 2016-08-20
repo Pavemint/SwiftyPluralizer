@@ -10,7 +10,7 @@ import UIKit
 import SwiftyPluralizer
 
 class ViewController: UITableViewController {
-  private let singulars = [
+  fileprivate let singulars = [
     "search",
     "switch",
     "fix",
@@ -123,13 +123,13 @@ class ViewController: UITableViewController {
     "police",
   ]
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return singulars.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("default", forIndexPath: indexPath)
-    let singular = singulars[indexPath.row]
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
+    let singular = singulars[(indexPath as NSIndexPath).row]
     cell.textLabel?.text = singular
     cell.detailTextLabel?.text = "Plural: " + singular.plural
     return cell

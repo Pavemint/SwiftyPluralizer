@@ -8,37 +8,37 @@
 
 import Foundation
 
-public class Pluralizer {
-  public func addPlural(pattern: String, _ replacement: String) {
-    plurals.insert(Rule(pattern: pattern, replacement: replacement), atIndex: 0)
+open class Pluralizer {
+  open func addPlural(_ pattern: String, _ replacement: String) {
+    plurals.insert(Rule(pattern: pattern, replacement: replacement), at: 0)
   }
   
-  public func addSingular(pattern: String, _ replacement: String) {
-    singulars.insert(Rule(pattern: pattern, replacement: replacement), atIndex: 0)
+  open func addSingular(_ pattern: String, _ replacement: String) {
+    singulars.insert(Rule(pattern: pattern, replacement: replacement), at: 0)
   }
   
-  public func addIrregular(singular: String, _ plural: String) {
+  open func addIrregular(_ singular: String, _ plural: String) {
     addSingular("\(plural)$", singular)
     addPlural("\(singular)$", plural)
   }
   
-  public func addUncountable(words: String...) {
+  open func addUncountable(_ words: String...) {
     uncountables.append(words)
   }
   
-  public func plural(word: String) -> String {
+  open func plural(_ word: String) -> String {
     return apply(word, rules: plurals)
   }
   
-  public func singular(word: String) -> String {
+  open func singular(_ word: String) -> String {
     return apply(word, rules: singulars)
   }
   
-  private var plurals = [Rule]()
-  private var singulars = [Rule]()
-  private var uncountables = Uncountables()
+  fileprivate var plurals = [Rule]()
+  fileprivate var singulars = [Rule]()
+  fileprivate var uncountables = Uncountables()
   
-  private func apply(word: String, rules: [Rule]) -> String {
+  fileprivate func apply(_ word: String, rules: [Rule]) -> String {
     guard !uncountables.match(word) && word != "" else { return word }
     
     for rule in rules {
@@ -53,26 +53,26 @@ private struct Rule {
   let pattern: String
   let replacement: String
   
-  private func apply(word: String) -> String? {
-    guard let regex = try? NSRegularExpression(pattern: pattern, options: .CaseInsensitive) else { return nil }
+  fileprivate func apply(_ word: String) -> String? {
+    guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else { return nil }
     let range = NSMakeRange(0, word.characters.count)
-    guard regex.matchesInString(word, options: [], range: range).count > 0 else { return nil }
-    return regex.stringByReplacingMatchesInString(word, options: [], range: range, withTemplate: replacement)
+    guard regex.matches(in: word, options: [], range: range).count > 0 else { return nil }
+    return regex.stringByReplacingMatches(in: word, options: [], range: range, withTemplate: replacement)
   }
 }
 
 private struct Uncountables {
-  private var patterns = [String]()
+  fileprivate var patterns = [String]()
   
-  private mutating func append(patterns: [String]) {
+  fileprivate mutating func append(_ patterns: [String]) {
     self.patterns += patterns.map { "\($0)$" }
   }
   
-  private func match(word: String) -> Bool {
+  fileprivate func match(_ word: String) -> Bool {
     for pattern in patterns {
-      guard let regex = try? NSRegularExpression(pattern: pattern, options: .CaseInsensitive) else { continue }
+      guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else { continue }
       let range = NSMakeRange(0, word.characters.count)
-      if regex.matchesInString(word, options: [], range: range).count > 0 { return true }
+      if regex.matches(in: word, options: [], range: range).count > 0 { return true }
     }
     return false
   }
